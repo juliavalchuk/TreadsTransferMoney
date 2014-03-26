@@ -51,7 +51,7 @@ public class Bank {
                 try{
                     if(to.getLock().tryLock(500, TimeUnit.MILLISECONDS)){
                         try{
-                              if(ifCanTransact(from, to, money))   {
+                              if(isCanTransact(from, to, money))   {
                                   from.addMoney(-money);
                                   to.addMoney(money);
                               }   else{
@@ -73,7 +73,7 @@ public class Bank {
         transfer(transaction.FromAcc, transaction.ToAcc, transaction.Money);
     }
 
-    private boolean ifCanTransact(Account accFrom, Account accTo, int money){
+    private boolean isCanTransact(Account accFrom, Account accTo, int money){
          return (accFrom.getMoney() - money > 0) && (accTo.getMoney() + money > 0);
     }
 
