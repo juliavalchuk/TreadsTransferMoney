@@ -1,7 +1,7 @@
 package com.threads.transaction.bank;
 
-import java.util.Hashtable;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -14,7 +14,7 @@ public class Bank {
     public Bank()
     {
         // accounts = Collections.synchronizedMap( new Hashtable<Integer, Account>());
-        accounts = new Hashtable<Integer, Account>();
+        accounts = new ConcurrentHashMap<Integer, Account>();
     }
 
     public void addAccount(Account acc)
@@ -66,7 +66,6 @@ public class Bank {
                 }
             }
         }
-
     }
 
     public void transfer(Transaction transaction) throws InterruptedException {
